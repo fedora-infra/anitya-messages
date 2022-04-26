@@ -1,0 +1,14 @@
+[run]
+branch = True
+include =
+    anitya_schema/anitya_schema/*
+
+
+[report]
+fail_under = 88
+precision = 2
+exclude_lines =
+    pragma: no cover
+    if __name__ == .__main__.:
+omit =
+    anitya_schema/anitya_schema/tests/*

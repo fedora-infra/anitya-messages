@@ -1,0 +1,15 @@
+.. image:: https://img.shields.io/pypi/v/anitya_schema.svg
+  :target: https://pypi.org/project/anitya_schema/
+
+.. image:: https://readthedocs.org/projects/anitya_schema/badge/?version=latest
+  :alt: Documentation Status
+  :target: https://anitya_schema.readthedocs.io/en/latest/?badge=latest
+
+Anitya Message Schema
+=====================
+
+JSON schema definitions for messages published by Anitya.
+
+See http://json-schema.org/ for documentation on the schema format. See
+https://fedora-messaging.readthedocs.io/en/latest/messages.html for
+documentation on fedora-messaging.
