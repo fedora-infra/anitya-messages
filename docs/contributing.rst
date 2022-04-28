@@ -112,6 +112,7 @@ To do the release you need following python packages installed::
 
     wheel
     twine
+    towncrier
 
 If you are a maintainer and wish to make a release of Anitya Messaging Schema,
 follow these steps:
