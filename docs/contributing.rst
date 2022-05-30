@@ -117,7 +117,7 @@ To do the release you need following python packages installed::
 If you are a maintainer and wish to make a release of Anitya Messaging Schema,
 follow these steps:
 
-1. Change the version in ``setup.py``.
+1. Change the version in ``anitya_schema/__init__.py``.
 
 2. Add any missing news fragments to the ``news`` folder.
 
