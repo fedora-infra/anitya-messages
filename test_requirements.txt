@@ -9,7 +9,7 @@ pytest-cov==3.0.0
 
 # Required to test building the docs
 # sphinxcontrib-httpdomain errors on Sphinx 4.1.x
-sphinx==5.0.1
+sphinx==5.0.2
 sphinxcontrib-httpdomain==1.8.0
 sqlalchemy_schemadisplay==1.3
 
