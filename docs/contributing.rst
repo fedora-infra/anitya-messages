@@ -94,7 +94,7 @@ And where the ``source`` part of the filename is:
   there is no associated issue
 * ``username`` for contributors (``author`` extention). It should be the
   username part of their commit's email address.
-  
+
 For example:
 
 If this PR is solving `bug 714`
@@ -110,14 +110,14 @@ Release Guide
 
 To do the release you need following python packages installed::
 
-    wheel
-    twine
+    poetry
     towncrier
 
 If you are a maintainer and wish to make a release of Anitya Messaging Schema,
 follow these steps:
 
-1. Change the version in ``anitya_schema/__init__.py``.
+1. Change the version using ``poetry version <version>``.
+   This is used to also set the version in the documentation.
 
 2. Add any missing news fragments to the ``news`` folder.
 
@@ -144,9 +144,9 @@ follow these steps:
 8. Don't forget to ``git push --tags``.
 
 9. Sometimes you need to also do ``git push``.
-   
-10. Build the Python packages with ``python setup.py sdist bdist_wheel``.
 
-11. Upload the packages with ``twine upload dist/<dists>``.
+10. Build the Python packages with ``poetry build``.
+
+11. Upload the packages with ``poetry publish``.
 
 12. Create new release on `GitHub releases <https://github.com/fedora-infra/anitya-messages/releases>`_.
