@@ -18,6 +18,8 @@
 import unittest
 import mock
 
+import pytest
+
 from anitya_schema import (
     ProjectCreated,
     ProjectDeleted,
@@ -28,6 +30,7 @@ from anitya_schema import (
     ProjectMapDeleted,
     ProjectMapEdited,
     ProjectVersionDeleted,
+    ProjectVersionDeletedV2,
     ProjectVersionUpdated,
     ProjectVersionUpdatedV2,
 )
@@ -698,3 +701,69 @@ class TestProjectVersionDeleted(unittest.TestCase):
         self.message.body = {"message": {"version": "1.0.0"}}
 
         self.assertEqual(self.message.version, "1.0.0")
+
+
+class TestProjectVersionDeletedV2:
+    """Tests for anitya_schema.project_messages.ProjectVersionDeletedV2 class."""
+
+    def setup(self):
+        """Set up the tests."""
+        self.message = ProjectVersionDeletedV2()
+
+    @mock.patch(
+        "anitya_schema.project_messages.ProjectVersionDeletedV2.summary",
+        new_callable=mock.PropertyMock,
+    )
+    def test__str__(self, mock_property):
+        """Assert that correct string is returned."""
+        mock_property.return_value = "Dummy"
+
+        assert self.message.__str__() == "Dummy"
+
+    @pytest.mark.parametrize(
+        "test_input,expected",
+        [
+            (
+                ["1.0.0"],
+                "A version '1.0.0' was deleted in project Dummy in release-monitoring.",
+            ),
+            (
+                ["1.0.0", "1.0.1"],
+                "A versions '1.0.0, 1.0.1' were deleted in project Dummy in release-monitoring.",
+            ),
+            (
+                ["1.0.0", "1.0.1", "1.0.2", "1.0.3", "1.0.4"],
+                "A versions '1.0.0, 1.0.1, 1.0.2, 1.0.3, 1.0.4' were deleted in project Dummy in release-monitoring.",  # noqa: E501
+            ),
+            (
+                ["1.0.0", "1.0.1", "1.0.2", "1.0.3", "1.0.4", "1.0.5"],
+                "6 versions entries were deleted in project Dummy in release-monitoring.",
+            ),
+        ],
+    )
+    @mock.patch(
+        "anitya_schema.project_messages.ProjectVersionDeletedV2.project_name",
+        new_callable=mock.PropertyMock,
+    )
+    @mock.patch(
+        "anitya_schema.project_messages.ProjectVersionDeletedV2.versions",
+        new_callable=mock.PropertyMock,
+    )
+    def test_summary(self, mock_versions, mock_name, test_input, expected):
+        """Assert that correct summary string is returned."""
+        mock_name.return_value = "Dummy"
+        mock_versions.return_value = test_input
+
+        assert self.message.summary == expected
+
+    def test_agent(self):
+        """Assert that agent is returned."""
+        self.message.body = {"message": {"agent": "Dummy"}}
+
+        assert self.message.agent == "Dummy"
+
+    def test_versions(self):
+        """Assert that version string is returned."""
+        self.message.body = {"message": {"versions": ["1.0.0"]}}
+
+        assert self.message.versions == ["1.0.0"]

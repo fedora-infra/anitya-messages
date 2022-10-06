@@ -25,6 +25,7 @@ from .project_messages import (  # noqa: F401
     ProjectMapDeleted,
     ProjectMapEdited,
     ProjectVersionDeleted,
+    ProjectVersionDeletedV2,
     ProjectVersionUpdated,
     ProjectVersionUpdatedV2,
 )
