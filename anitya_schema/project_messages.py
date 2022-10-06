@@ -863,6 +863,19 @@ class ProjectVersionDeleted(ProjectMessage):
         },
     }
 
+    def __init__(
+        self, body=None, headers=None, topic=None, properties=None, severity=None
+    ):
+        """
+        Message constructor.
+        """
+        super().__init__(body, headers, topic, properties, severity)
+        warnings.warn(
+            "ProjectVersionDeleted class is deprecated, please use ProjectVersionDeletedV2 instead",
+            DeprecationWarning,
+            stacklevel=2,
+        )
+
     def __str__(self):
         """
         Return a complete human-readable representation of the message, which
@@ -886,3 +899,68 @@ class ProjectVersionDeleted(ProjectMessage):
     def version(self):
         """The version that was deleted."""
         return self.body["message"]["version"]
+
+
+class ProjectVersionDeletedV2(ProjectMessage):
+    """
+    Sent when version is deleted in Anitya.
+
+    Attributes:
+        topic (str): Message topic
+            "org.release-monitoring.prod.anitya.project.version.remove.v2"
+        body_schema (dict): Message schema definition
+    """
+
+    topic = "org.release-monitoring.prod.anitya.project.version.remove.v2"
+    body_schema = {
+        "id": "https://fedoraproject.org/jsonschema/anitya_project_version_remove_v2.json",
+        "$schema": "http://json-schema.org/draft-04/schema#",
+        "type": "object",
+        "required": ["project", "message", "distro"],
+        "properties": {
+            "distro": {"type": "null"},
+            "message": {
+                "type": "object",
+                "properties": {
+                    "agent": {"type": "string"},
+                    "project": {"type": "string"},
+                    "versions": {"type": "array", "items": {"type": "string"}},
+                },
+                "required": ["agent", "project", "versions"],
+            },
+            "project": ProjectMessage.project_schema,
+        },
+    }
+
+    def __str__(self):
+        """
+        Return a complete human-readable representation of the message, which
+        in this case is equivalent to the summary.
+        """
+        return self.summary
+
+    @property
+    def summary(self):
+        """Return a summary of the message."""
+        if len(self.versions) == 1:
+            return "A version '{}' was deleted in project {} in release-monitoring.".format(
+                self.versions[0], self.project_name
+            )
+        elif len(self.versions) <= 5:
+            return "A versions '{}' were deleted in project {} in release-monitoring.".format(
+                ", ".join(self.versions), self.project_name
+            )
+        else:
+            return "{} versions entries were deleted in project {} in release-monitoring.".format(
+                len(self.versions), self.project_name
+            )
+
+    @property
+    def agent(self):
+        """User that did the action."""
+        return self.body["message"]["agent"]
+
+    @property
+    def versions(self):
+        """The versions that were deleted."""
+        return self.body["message"]["versions"]

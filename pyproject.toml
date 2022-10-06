@@ -94,8 +94,9 @@ exclude = [
 "anitya.project.map.update" = "anitya_schema:ProjectMapEdited"
 "anitya.project.map.remove" = "anitya_schema:ProjectMapDeleted"
 "anitya.project.version.update" = "anitya_schema:ProjectVersionUpdated"
-"anitya.project.version.remove" = "anitya_schema:ProjectVersionDeleted"
 "anitya.project.version.update.v2" = "anitya_schema:ProjectVersionUpdatedV2"
+"anitya.project.version.remove" = "anitya_schema:ProjectVersionDeleted"
+"anitya.project.version.remove.v2" = "anitya_schema:ProjectVersionDeletedV2"
 
 [tool.poetry.dependencies]
 python = "^3.8"
