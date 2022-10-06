@@ -82,32 +82,20 @@ exclude = [
 ]
 
 [tool.poetry.plugins."fedora.messages"]
-
-[tool.poetry.plugins."fedora.messages.anitya.distro"]
-add = "anitya_schema:DistroCreated"
-edit = "anitya_schema:DistroEdited"
-remove = "anitya_schema:DistroDeleted"
-
-[tool.poetry.plugins."fedora.messages.anitya.project"]
-add = "anitya_schema:ProjectCreated"
-edit = "anitya_schema:ProjectEdited"
-remove = "anitya_schema:ProjectDeleted"
-flag = "anitya_schema:ProjectFlag"
-
-[tool.poetry.plugins."fedora.messages.anitya.flag"]
-set = "anitya_schema:ProjectFlagSet"
-
-[tool.poetry.plugins."fedora.messages.anitya.project.map"]
-new = "anitya_schema:ProjectMapCreated"
-update = "anitya_schema:ProjectMapEdited"
-remove = "anitya_schema:ProjectMapDeleted"
-
-[tool.poetry.plugins."fedora.messages.anitya.project.version"]
-update = "anitya_schema:ProjectVersionUpdated"
-remove = "anitya_schema:ProjectVersionDeleted"
-
-[tool.poetry.plugins."fedora.messages.anitya.project.version.update"]
-v2 = "anitya_schema:ProjectVersionUpdatedV2"
+"anitya.distro.add" = "anitya_schema:DistroCreated"
+"anitya.distro.edit" = "anitya_schema:DistroEdited"
+"anitya.distro.remove" = "anitya_schema:DistroDeleted"
+"anitya.project.add" = "anitya_schema:ProjectCreated"
+"anitya.project.edit" = "anitya_schema:ProjectEdited"
+"anitya.project.remove" = "anitya_schema:ProjectDeleted"
+"anitya.project.flag" = "anitya_schema:ProjectFlag"
+"anitya.project.flag.set" = "anitya_schema:ProjectFlagSet"
+"anitya.project.map.new" = "anitya_schema:ProjectMapCreated"
+"anitya.project.map.update" = "anitya_schema:ProjectMapEdited"
+"anitya.project.map.remove" = "anitya_schema:ProjectMapDeleted"
+"anitya.project.version.update" = "anitya_schema:ProjectVersionUpdated"
+"anitya.project.version.remove" = "anitya_schema:ProjectVersionDeleted"
+"anitya.project.version.update.v2" = "anitya_schema:ProjectVersionUpdatedV2"
 
 [tool.poetry.dependencies]
 python = "^3.8"
