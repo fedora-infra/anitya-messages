@@ -57,3 +57,79 @@ exclude = '''
   )/
 )
 '''
+
+[tool.poetry]
+name = "anitya_schema"
+version = "2.0.1"
+description = "JSON schema definitions for messages published by Anitya"
+authors = ["Fedora Infrastructure Team <infrastructure@lists.fedoraproject.org>"]
+maintainers = ["Fedora Infrastructure Team <infrastructure@lists.fedoraproject.org>"]
+readme = "README.rst"
+homepage = "https://github.com/fedora-infra/anitya-messages"
+documentation = "https://anitya-messages.readthedocs.io/en/latest"
+repository = "https://github.com/fedora-infra/anitya-messages"
+license = "GPL-2.0-or-later"
+classifiers = [
+  "Programming Language :: Python :: 3.8",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10"
+]
+include = [
+  "LICENSE", "README.rst"
+]
+exclude = [
+  "anitya_schema.tests"
+]
+
+[tool.poetry.plugins."fedora.messages"]
+
+[tool.poetry.plugins."fedora.messages.anitya.distro"]
+add = "anitya_schema:DistroCreated"
+edit = "anitya_schema:DistroEdited"
+remove = "anitya_schema:DistroDeleted"
+
+[tool.poetry.plugins."fedora.messages.anitya.project"]
+add = "anitya_schema:ProjectCreated"
+edit = "anitya_schema:ProjectEdited"
+remove = "anitya_schema:ProjectDeleted"
+flag = "anitya_schema:ProjectFlag"
+
+[tool.poetry.plugins."fedora.messages.anitya.flag"]
+set = "anitya_schema:ProjectFlagSet"
+
+[tool.poetry.plugins."fedora.messages.anitya.project.map"]
+new = "anitya_schema:ProjectMapCreated"
+update = "anitya_schema:ProjectMapEdited"
+remove = "anitya_schema:ProjectMapDeleted"
+
+[tool.poetry.plugins."fedora.messages.anitya.project.version"]
+update = "anitya_schema:ProjectVersionUpdated"
+remove = "anitya_schema:ProjectVersionDeleted"
+
+[tool.poetry.plugins."fedora.messages.anitya.project.version.update"]
+v2 = "anitya_schema:ProjectVersionUpdatedV2"
+
+[tool.poetry.dependencies]
+python = "^3.8"
+fedora-messaging = "^3.1.0"
+
+[tool.poetry.dev-dependencies]
+bandit = "^1.7.4"
+black = "^22.8.0"
+coverage = "^6.4.4"
+diff-cover = "^7.0.1"
+flake8 = "^5.0.4"
+mock = "^4.0.3"
+pytest = "^7.1.3"
+pytest-cov = "^4.0.0"
+
+# Required to test building the docs
+Sphinx = "^5.2.3"
+
+# Mypy test requirements
+mypy = "^0.982"
+types-mock = "^4.0.15"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"

@@ -1,4 +1,4 @@
-# Copyright (C) 2021  Red Hat, Inc.
+# Copyright (C) 2021-2022  Red Hat, Inc.
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -13,6 +13,7 @@
 # You should have received a copy of the GNU General Public License along
 # with this program; if not, write to the Free Software Foundation, Inc.,
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+from importlib import metadata
 
 from .project_messages import (  # noqa: F401
     ProjectCreated,
@@ -27,7 +28,6 @@ from .project_messages import (  # noqa: F401
     ProjectVersionUpdated,
     ProjectVersionUpdatedV2,
 )
-
 from .distro_messages import DistroCreated, DistroDeleted, DistroEdited  # noqa: F401
 
-__version__ = "2.0.1"
+__version__ = metadata.version(__package__)
