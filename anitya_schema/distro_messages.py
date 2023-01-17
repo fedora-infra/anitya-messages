@@ -66,11 +66,6 @@ class DistroCreated(AnityaMessage):
         )
 
     @property
-    def agent(self):
-        """User that did the change."""
-        return self.body["message"]["agent"]
-
-    @property
     def distro_name(self):
         """The new distribution's name."""
         return self.body["distro"]["name"]
@@ -136,11 +131,6 @@ class DistroEdited(AnityaMessage):
         return "The name of the {} distribution changed to {}.".format(
             self.distro_name_old, self.distro_name_new
         )
-
-    @property
-    def agent(self):
-        """User that did the change."""
-        return self.body["message"]["agent"]
 
     @property
     def distro_name_new(self):
@@ -214,11 +204,6 @@ class DistroDeleted(AnityaMessage):
         return "The {} distribution was removed from release-monitoring.".format(
             self.distro_name
         )
-
-    @property
-    def agent(self):
-        """User that did the change."""
-        return self.body["message"]["agent"]
 
     @property
     def distro_name(self):

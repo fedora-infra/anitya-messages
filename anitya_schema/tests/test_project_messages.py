@@ -123,11 +123,11 @@ class TestProjectCreated(unittest.TestCase):
         exp = "A new project, Dummy, was added to release-monitoring."
         self.assertEqual(self.message.summary, exp)
 
-    def test_agent(self):
-        """Assert that agent is returned."""
+    def test_agent_name(self):
+        """Assert that agent_name is returned."""
         self.message.body = {"message": {"agent": "Dummy"}}
 
-        self.assertEqual(self.message.agent, "Dummy")
+        self.assertEqual(self.message.agent_name, "Dummy")
 
 
 class TestProjectEdited(unittest.TestCase):
@@ -158,11 +158,11 @@ class TestProjectEdited(unittest.TestCase):
         exp = "A project, Dummy, was edited in release-monitoring."
         self.assertEqual(self.message.summary, exp)
 
-    def test_agent(self):
-        """Assert that agent is returned."""
+    def test_agent_name(self):
+        """Assert that agent_name is returned."""
         self.message.body = {"message": {"agent": "Dummy"}}
 
-        self.assertEqual(self.message.agent, "Dummy")
+        self.assertEqual(self.message.agent_name, "Dummy")
 
 
 class TestProjectDeleted(unittest.TestCase):
@@ -193,11 +193,11 @@ class TestProjectDeleted(unittest.TestCase):
         exp = "A project, Dummy, was deleted in release-monitoring."
         self.assertEqual(self.message.summary, exp)
 
-    def test_agent(self):
-        """Assert that agent is returned."""
+    def test_agent_name(self):
+        """Assert that agent_name is returned."""
         self.message.body = {"message": {"agent": "Dummy"}}
 
-        self.assertEqual(self.message.agent, "Dummy")
+        self.assertEqual(self.message.agent_name, "Dummy")
 
 
 class TestProjectFlag(unittest.TestCase):
@@ -228,11 +228,11 @@ class TestProjectFlag(unittest.TestCase):
         exp = "A flag was created on project Dummy in release-monitoring."
         self.assertEqual(self.message.summary, exp)
 
-    def test_agent(self):
-        """Assert that agent is returned."""
+    def test_agent_name(self):
+        """Assert that agent_name is returned."""
         self.message.body = {"message": {"agent": "Dummy"}}
 
-        self.assertEqual(self.message.agent, "Dummy")
+        self.assertEqual(self.message.agent_name, "Dummy")
 
     def test_mappings(self):
         """Assert that array of mappings is returned."""
@@ -296,11 +296,11 @@ class TestProjectFlagSet(unittest.TestCase):
         exp = "A flag '007' was closed in release-monitoring."
         self.assertEqual(self.message.summary, exp)
 
-    def test_agent(self):
-        """Assert that agent is returned."""
+    def test_agent_name(self):
+        """Assert that agent_name is returned."""
         self.message.body = {"message": {"agent": "Dummy"}}
 
-        self.assertEqual(self.message.agent, "Dummy")
+        self.assertEqual(self.message.agent_name, "Dummy")
 
     def test_flag(self):
         """Assert that flag string is returned."""
@@ -353,11 +353,11 @@ class TestProjectMapCreated(unittest.TestCase):
 
         self.assertEqual(self.message.distro, "Dummy")
 
-    def test_agent(self):
-        """Assert that agent is returned."""
+    def test_agent_name(self):
+        """Assert that agent_name is returned."""
         self.message.body = {"message": {"agent": "Dummy"}}
 
-        self.assertEqual(self.message.agent, "Dummy")
+        self.assertEqual(self.message.agent_name, "Dummy")
 
     def test_package_name(self):
         """Assert that package name string is returned."""
@@ -400,11 +400,11 @@ class TestProjectMapEdited(unittest.TestCase):
 
         self.assertEqual(self.message.distro, "Dummy")
 
-    def test_agent(self):
-        """Assert that agent is returned."""
+    def test_agent_name(self):
+        """Assert that agent_name is returned."""
         self.message.body = {"message": {"agent": "Dummy"}}
 
-        self.assertEqual(self.message.agent, "Dummy")
+        self.assertEqual(self.message.agent_name, "Dummy")
 
     def test_edited(self):
         """Assert that list of edited fields is returned."""
@@ -453,11 +453,11 @@ class TestProjectMapDeleted(unittest.TestCase):
         exp = "A mapping for project Dummy was deleted in release-monitoring."
         self.assertEqual(self.message.summary, exp)
 
-    def test_agent(self):
-        """Assert that agent is returned."""
+    def test_agent_name(self):
+        """Assert that agent_name is returned."""
         self.message.body = {"message": {"agent": "Dummy"}}
 
-        self.assertEqual(self.message.agent, "Dummy")
+        self.assertEqual(self.message.agent_name, "Dummy")
 
     def test_distro(self):
         """Assert that distro name string is returned."""
@@ -510,11 +510,11 @@ class TestProjectVersionUpdated(unittest.TestCase):
         exp = "A new version '1.0.0' was found for project Dummy in release-monitoring."
         self.assertEqual(self.message.summary, exp)
 
-    def test_agent(self):
-        """Assert that agent is returned."""
+    def test_agent_name(self):
+        """Assert that agent_name is returned."""
         self.message.body = {"message": {"agent": "Dummy"}}
 
-        self.assertEqual(self.message.agent, "Dummy")
+        self.assertEqual(self.message.agent_name, "Dummy")
 
     def test_old_version(self):
         """Assert that old version is returned."""
@@ -600,11 +600,11 @@ class TestProjectVersionUpdatedV2(unittest.TestCase):
         exp = "A new versions '1.0.0, 0.9.0' were found for project Dummy in release-monitoring."
         self.assertEqual(self.message.summary, exp)
 
-    def test_agent(self):
-        """Assert that agent is returned."""
+    def test_agent_name(self):
+        """Assert that agent_name is returned."""
         self.message.body = {"message": {"agent": "Dummy"}}
 
-        self.assertEqual(self.message.agent, "Dummy")
+        self.assertEqual(self.message.agent_name, "Dummy")
 
     def test_old_version(self):
         """Assert that old version is returned."""
@@ -690,11 +690,11 @@ class TestProjectVersionDeleted(unittest.TestCase):
         exp = "A version '1.0.0' was deleted in project Dummy in release-monitoring."
         self.assertEqual(self.message.summary, exp)
 
-    def test_agent(self):
-        """Assert that agent is returned."""
+    def test_agent_name(self):
+        """Assert that agent_name is returned."""
         self.message.body = {"message": {"agent": "Dummy"}}
 
-        self.assertEqual(self.message.agent, "Dummy")
+        self.assertEqual(self.message.agent_name, "Dummy")
 
     def test_version(self):
         """Assert that version string is returned."""
@@ -756,11 +756,11 @@ class TestProjectVersionDeletedV2:
 
         assert self.message.summary == expected
 
-    def test_agent(self):
-        """Assert that agent is returned."""
+    def test_agent_name(self):
+        """Assert that agent_name is returned."""
         self.message.body = {"message": {"agent": "Dummy"}}
 
-        assert self.message.agent == "Dummy"
+        assert self.message.agent_name == "Dummy"
 
     def test_versions(self):
         """Assert that version string is returned."""

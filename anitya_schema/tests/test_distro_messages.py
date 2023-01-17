@@ -49,11 +49,11 @@ class TestDistroCreated(unittest.TestCase):
         exp = "A new distribution, Dummy, was added to release-monitoring."
         self.assertEqual(self.message.summary, exp)
 
-    def test_agent(self):
-        """Assert that agent is returned."""
+    def test_agent_name(self):
+        """Assert that agent_name is returned."""
         self.message.body = {"message": {"agent": "Dummy"}}
 
-        self.assertEqual(self.message.agent, "Dummy")
+        self.assertEqual(self.message.agent_name, "Dummy")
 
     def test_distro_name(self):
         """Assert that distro name is returned."""
@@ -103,11 +103,11 @@ class TestDistroEdited(unittest.TestCase):
         exp = "The name of the Old name distribution changed to New name."
         self.assertEqual(self.message.summary, exp)
 
-    def test_agent(self):
-        """Assert that agent is returned."""
+    def test_agent_name(self):
+        """Assert that agent_name is returned."""
         self.message.body = {"message": {"agent": "Dummy"}}
 
-        self.assertEqual(self.message.agent, "Dummy")
+        self.assertEqual(self.message.agent_name, "Dummy")
 
     def test_name_new(self):
         """Assert that new_name string is returned."""
@@ -166,11 +166,11 @@ class TestDistroDeleted(unittest.TestCase):
         exp = "The Dummy distribution was removed from release-monitoring."
         self.assertEqual(self.message.summary, exp)
 
-    def test_agent(self):
-        """Assert that agent is returned."""
+    def test_agent_name(self):
+        """Assert that agent_name is returned."""
         self.message.body = {"message": {"agent": "Dummy"}}
 
-        self.assertEqual(self.message.agent, "Dummy")
+        self.assertEqual(self.message.agent_name, "Dummy")
 
     def test_distro_name(self):
         """Assert that distro name is returned."""
