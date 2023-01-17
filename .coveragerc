@@ -5,10 +5,10 @@ include =
 
 
 [report]
-fail_under = 88
+fail_under = 100
 precision = 2
 exclude_lines =
     pragma: no cover
     if __name__ == .__main__.:
 omit =
-    anitya_schema/anitya_schema/tests/*
+    anitya_schema/tests/*
