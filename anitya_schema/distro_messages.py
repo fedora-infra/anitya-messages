@@ -15,12 +15,10 @@
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 """The schema for distribution-related messages sent by Anitya."""
 
-from fedora_messaging import message
-
-ANITYA_URL = "https://release-monitoring.org/"
+from .base import AnityaMessage, ANITYA_URL
 
 
-class DistroCreated(message.Message):
+class DistroCreated(AnityaMessage):
     """
     Message sent by Anitya to the "anitya.distro.add" topic when a new
     distribution is added.
@@ -83,7 +81,7 @@ class DistroCreated(message.Message):
         return ANITYA_URL + "distros/" + self.distro_name
 
 
-class DistroEdited(message.Message):
+class DistroEdited(AnityaMessage):
     """
     Message sent by Anitya when a distribution is edited.
 
@@ -165,7 +163,7 @@ class DistroEdited(message.Message):
         return ANITYA_URL + "distros/" + self.distro_name_old
 
 
-class DistroDeleted(message.Message):
+class DistroDeleted(AnityaMessage):
     """
     Message sent by Anitya when a distribution is removed.
 

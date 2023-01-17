@@ -16,12 +16,10 @@
 """The schema for project-related messages sent by Anitya."""
 import warnings
 
-from fedora_messaging import message
-
-ANITYA_URL = "https://release-monitoring.org/"
+from .base import AnityaMessage, ANITYA_URL
 
 
-class ProjectMessage(message.Message):
+class ProjectMessage(AnityaMessage):
     """
     Base class for every project message.
 
@@ -336,7 +334,7 @@ class ProjectFlag(ProjectMessage):
         return self.body["message"]["reason"]
 
 
-class ProjectFlagSet(message.Message):
+class ProjectFlagSet(AnityaMessage):
     """
     Sent when a flag is closed for a project.
 
