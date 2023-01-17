@@ -142,11 +142,6 @@ class ProjectCreated(ProjectMessage):
             self.project_name
         )
 
-    @property
-    def agent(self):
-        """User that did the action."""
-        return self.body["message"]["agent"]
-
 
 class ProjectEdited(ProjectMessage):
     """
@@ -201,11 +196,6 @@ class ProjectEdited(ProjectMessage):
             self.project_name
         )
 
-    @property
-    def agent(self):
-        """User that did the action."""
-        return self.body["message"]["agent"]
-
 
 class ProjectDeleted(ProjectMessage):
     """
@@ -251,11 +241,6 @@ class ProjectDeleted(ProjectMessage):
         return "A project, {}, was deleted in release-monitoring.".format(
             self.project_name
         )
-
-    @property
-    def agent(self):
-        """User that did the action."""
-        return self.body["message"]["agent"]
 
 
 class ProjectFlag(ProjectMessage):
@@ -307,11 +292,6 @@ class ProjectFlag(ProjectMessage):
         return "A flag was created on project {} in release-monitoring.".format(
             self.project_name
         )
-
-    @property
-    def agent(self):
-        """User that did the action."""
-        return self.body["message"]["agent"]
 
     @property
     def mappings(self):
@@ -376,11 +356,6 @@ class ProjectFlagSet(AnityaMessage):
     def summary(self):
         """Return a summary of the message."""
         return "A flag '{}' was {} in release-monitoring.".format(self.flag, self.state)
-
-    @property
-    def agent(self):
-        """User that did the action."""
-        return self.body["message"]["agent"]
 
     @property
     def flag(self):
@@ -454,11 +429,6 @@ class ProjectMapCreated(ProjectCreated):
         return self.body["distro"]["name"]
 
     @property
-    def agent(self):
-        """User that did the action."""
-        return self.body["message"]["agent"]
-
-    @property
     def package_name(self):
         """Package name for the new mapping."""
         return self.body["message"]["new"]
@@ -522,11 +492,6 @@ class ProjectMapEdited(ProjectMessage):
         return self.body["distro"]["name"]
 
     @property
-    def agent(self):
-        """User that did the action."""
-        return self.body["message"]["agent"]
-
-    @property
     def edited(self):
         """List of edited fields."""
         return self.body["message"]["edited"]
@@ -586,11 +551,6 @@ class ProjectMapDeleted(ProjectMessage):
         return "A mapping for project {} was deleted in release-monitoring.".format(
             self.project_name
         )
-
-    @property
-    def agent(self):
-        """User that did the action."""
-        return self.body["message"]["agent"]
 
     @property
     def distro(self):
@@ -678,11 +638,6 @@ class ProjectVersionUpdated(ProjectMessage):
                 self.version, self.project_name
             )
         )
-
-    @property
-    def agent(self):
-        """User that did the action."""
-        return self.body["message"]["agent"]
 
     @property
     def old_version(self):
@@ -787,11 +742,6 @@ class ProjectVersionUpdatedV2(ProjectMessage):
         )
 
     @property
-    def agent(self):
-        """User that did the action."""
-        return self.body["message"]["agent"]
-
-    @property
     def old_version(self):
         """Old version of project."""
         return self.body["message"]["old_version"]
@@ -889,11 +839,6 @@ class ProjectVersionDeleted(ProjectMessage):
         )
 
     @property
-    def agent(self):
-        """User that did the action."""
-        return self.body["message"]["agent"]
-
-    @property
     def version(self):
         """The version that was deleted."""
         return self.body["message"]["version"]
@@ -952,11 +897,6 @@ class ProjectVersionDeletedV2(ProjectMessage):
             return "{} versions entries were deleted in project {} in release-monitoring.".format(
                 len(self.versions), self.project_name
             )
-
-    @property
-    def agent(self):
-        """User that did the action."""
-        return self.body["message"]["agent"]
 
     @property
     def versions(self):
