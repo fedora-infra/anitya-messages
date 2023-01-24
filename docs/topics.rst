@@ -5,6 +5,12 @@ Message topics
 Anitya Messaging Schema provides following `fedora messaging
 <https://fedora-messaging.readthedocs.io/en/stable/>`_ topics.
 
+Message Base
+============
+
+.. automodule:: anitya_schema.base
+   :members:
+
 Distro topics
 =============
 
