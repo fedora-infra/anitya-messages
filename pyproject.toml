@@ -60,7 +60,7 @@ exclude = '''
 
 [tool.poetry]
 name = "anitya_schema"
-version = "2.1.0"
+version = "2.2.0"
 description = "JSON schema definitions for messages published by Anitya"
 authors = ["Fedora Infrastructure Team <infrastructure@lists.fedoraproject.org>"]
 maintainers = ["Fedora Infrastructure Team <infrastructure@lists.fedoraproject.org>"]
