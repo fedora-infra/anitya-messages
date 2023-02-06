@@ -116,7 +116,7 @@ pytest-cov = "^4.0.0"
 Sphinx = "^6.0.0"
 
 # Mypy test requirements
-mypy = "^0.991"
+mypy = "^1.0"
 types-mock = "^4.0.15"
 
 [build-system]
