@@ -503,14 +503,14 @@ tox = ["tox"]
 
 [[package]]
 name = "diff-cover"
-version = "7.5.0"
+version = "8.0.0"
 description = "Run coverage and linting reports on diffs"
 category = "dev"
 optional = false
-python-versions = ">=3.7.2,<4.0.0"
+python-versions = ">=3.8.10,<4.0.0"
 files = [
-    {file = "diff_cover-7.5.0-py3-none-any.whl", hash = "sha256:332f31d0892279de33bcc33dd1c75d318244af440dc1ce519984279682669691"},
-    {file = "diff_cover-7.5.0.tar.gz", hash = "sha256:a4b3024a831e4f38c22e809945f09d0a6a7ba662dc8e30d28f1a6b21a3edebfc"},
+    {file = "diff_cover-8.0.0-py3-none-any.whl", hash = "sha256:330b1a655c53c211ffee0dd23c8fee10a2e3539d26dc2362dd3f7606641b8c32"},
+    {file = "diff_cover-8.0.0.tar.gz", hash = "sha256:0995b78a1d5101f5d8922006220c070b18e32a5dbb4a96a073a1941705fe71e7"},
 ]
 
 [package.dependencies]
@@ -1823,5 +1823,5 @@ testing = ["coverage (>=5.0.3)", "zope.event", "zope.testing"]
 
 [metadata]
 lock-version = "2.0"
-python-versions = "^3.8.1"
-content-hash = "785b75075f8c22bdc55c551e75cf0a284f171fe85ae6a3707fc270ecab20a23f"
+python-versions = "^3.8.10"
+content-hash = "17dcb8d2df3e5cf117682a37b2a88f59921f0b013dda2f326dece630e6328d74"
