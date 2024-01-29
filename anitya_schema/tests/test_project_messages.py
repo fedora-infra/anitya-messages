@@ -39,7 +39,7 @@ from anitya_schema import (
 class TestProjectMessage(unittest.TestCase):
     """Tests for anitya_schema.project_messages.ProjectMessage class."""
 
-    def setUp(self):
+    def setup_method(self):
         """Set up the tests."""
         # We can't use ProjectMessage directly,
         # so we will use something that inherits it
@@ -98,7 +98,7 @@ class TestProjectMessage(unittest.TestCase):
 class TestProjectCreated(unittest.TestCase):
     """Tests for anitya_schema.project_messages.ProjectCreated class."""
 
-    def setUp(self):
+    def setup_method(self):
         """Set up the tests."""
         self.message = ProjectCreated()
 
@@ -133,7 +133,7 @@ class TestProjectCreated(unittest.TestCase):
 class TestProjectEdited(unittest.TestCase):
     """Tests for anitya_schema.project_messages.ProjectEdited class."""
 
-    def setUp(self):
+    def setup_method(self):
         """Set up the tests."""
         self.message = ProjectEdited()
 
@@ -168,7 +168,7 @@ class TestProjectEdited(unittest.TestCase):
 class TestProjectDeleted(unittest.TestCase):
     """Tests for anitya_schema.project_messages.ProjectDeleted class."""
 
-    def setUp(self):
+    def setup_method(self):
         """Set up the tests."""
         self.message = ProjectDeleted()
 
@@ -203,7 +203,7 @@ class TestProjectDeleted(unittest.TestCase):
 class TestProjectFlag(unittest.TestCase):
     """Tests for anitya_schema.project_messages.ProjectFlag class."""
 
-    def setUp(self):
+    def setup_method(self):
         """Set up the tests."""
         self.message = ProjectFlag()
 
@@ -266,7 +266,7 @@ class TestProjectFlag(unittest.TestCase):
 class TestProjectFlagSet(unittest.TestCase):
     """Tests for anitya_schema.project_messages.ProjectFlagSet class."""
 
-    def setUp(self):
+    def setup_method(self):
         """Set up the tests."""
         self.message = ProjectFlagSet()
 
@@ -322,7 +322,7 @@ class TestProjectFlagSet(unittest.TestCase):
 class TestProjectMapCreated(unittest.TestCase):
     """Tests for anitya_schema.project_messages.ProjectMapCreated class."""
 
-    def setUp(self):
+    def setup_method(self):
         """Set up the tests."""
         self.message = ProjectMapCreated()
 
@@ -369,7 +369,7 @@ class TestProjectMapCreated(unittest.TestCase):
 class TestProjectMapEdited(unittest.TestCase):
     """Tests for anitya_schema.project_messages.ProjectMapEdited class."""
 
-    def setUp(self):
+    def setup_method(self):
         """Set up the tests."""
         self.message = ProjectMapEdited()
 
@@ -428,7 +428,7 @@ class TestProjectMapEdited(unittest.TestCase):
 class TestProjectMapDeleted(unittest.TestCase):
     """Tests for anitya_schema.project_messages.ProjectMapDeleted class."""
 
-    def setUp(self):
+    def setup_method(self):
         """Set up the tests."""
         self.message = ProjectMapDeleted()
 
@@ -469,7 +469,7 @@ class TestProjectMapDeleted(unittest.TestCase):
 class TestProjectVersionUpdated(unittest.TestCase):
     """Tests for anitya_schema.project_messages.ProjectVersionUpdated class."""
 
-    def setUp(self):
+    def setup_method(self):
         """Set up the tests."""
         self.message = ProjectVersionUpdated()
 
@@ -570,7 +570,7 @@ class TestProjectVersionUpdated(unittest.TestCase):
 class TestProjectVersionUpdatedV2(unittest.TestCase):
     """Tests for anitya_schema.project_messages.ProjectVersionUpdatedV2 class."""
 
-    def setUp(self):
+    def setup_method(self):
         """Set up the tests."""
         self.message = ProjectVersionUpdatedV2()
 
@@ -660,7 +660,7 @@ class TestProjectVersionUpdatedV2(unittest.TestCase):
 class TestProjectVersionDeleted(unittest.TestCase):
     """Tests for anitya_schema.project_messages.ProjectVersionDeleted class."""
 
-    def setUp(self):
+    def setup_method(self):
         """Set up the tests."""
         self.message = ProjectVersionDeleted()
 
@@ -706,7 +706,7 @@ class TestProjectVersionDeleted(unittest.TestCase):
 class TestProjectVersionDeletedV2:
     """Tests for anitya_schema.project_messages.ProjectVersionDeletedV2 class."""
 
-    def setup(self):
+    def setup_method(self):
         """Set up the tests."""
         self.message = ProjectVersionDeletedV2()
 
