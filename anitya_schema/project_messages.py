@@ -433,6 +433,14 @@ class ProjectMapCreated(ProjectCreated):
         """Package name for the new mapping."""
         return self.body["message"]["new"]
 
+    @property
+    def packages(self):
+        """Fedora packages related to the change."""
+        if self.distro == "Fedora":
+            return [self.package_name]
+        else:
+            return []
+
 
 class ProjectMapEdited(ProjectMessage):
     """
@@ -505,6 +513,15 @@ class ProjectMapEdited(ProjectMessage):
     def package_name_prev(self):
         """Previous package name for the mapping."""
         return self.body["message"]["prev"]
+
+    @property
+    def packages(self):
+        """Fedora packages related to the change."""
+        if self.distro != "Fedora":
+            return []
+        pkgs = list(set([self.package_name_prev, self.package_name_new]))
+        pkgs.sort()
+        return pkgs
 
 
 class ProjectMapDeleted(ProjectMessage):
@@ -778,6 +795,15 @@ class ProjectVersionUpdatedV2(ProjectMessage):
     def stable_versions(self):
         """All stable versions on the project."""
         return self.body["message"]["stable_versions"]
+
+    @property
+    def packages(self):
+        """Fedora packages related to the change."""
+        return [
+            package["package_name"]
+            for package in self.body["message"]["packages"]
+            if package["distro"] == "Fedora"
+        ]
 
 
 class ProjectVersionDeleted(ProjectMessage):
