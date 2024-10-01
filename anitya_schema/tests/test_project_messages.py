@@ -362,6 +362,13 @@ class TestProjectMapCreated:
 
         assert self.message.package_name == "Dummy"
 
+    @pytest.mark.parametrize("distro,packages", [("Fedora", ["dummy"]), ("CentOS", [])])
+    def test_packages_fedora(self, distro, packages):
+        """Assert that packages list is filled only when it's on Fedora"""
+        self.message.body = {"distro": {"name": distro}, "message": {"new": "dummy"}}
+
+        assert self.message.packages == packages
+
 
 class TestProjectMapEdited:
     """Tests for anitya_schema.project_messages.ProjectMapEdited class."""
@@ -421,6 +428,26 @@ class TestProjectMapEdited:
 
         assert self.message.package_name_prev == "Dummy"
 
+    @pytest.mark.parametrize(
+        "distro,packages", [("Fedora", ["dummy", "dummy_prev"]), ("CentOS", [])]
+    )
+    def test_packages_fedora(self, distro, packages):
+        """Assert that packages list is filled only when it's on Fedora"""
+        self.message.body = {
+            "distro": {"name": distro},
+            "message": {"prev": "dummy_prev", "new": "dummy"},
+        }
+        assert self.message.packages == packages
+
+    @pytest.mark.parametrize("distro,packages", [("Fedora", ["dummy"]), ("CentOS", [])])
+    def test_packages_fedora_same_package(self, distro, packages):
+        """Assert that packages list is filled only when it's on Fedora"""
+        self.message.body = {
+            "distro": {"name": distro},
+            "message": {"prev": "dummy", "new": "dummy"},
+        }
+        assert self.message.packages == packages
+
 
 class TestProjectMapDeleted:
     """Tests for anitya_schema.project_messages.ProjectMapDeleted class."""
@@ -461,6 +488,14 @@ class TestProjectMapDeleted:
         self.message.body = {"message": {"distro": "Dummy"}}
 
         assert self.message.distro == "Dummy"
+
+    @pytest.mark.skip("The package name is not part of the message")
+    @pytest.mark.parametrize("distro,packages", [("Fedora", ["dummy"]), ("CentOS", [])])
+    def test_packages_fedora(self, distro, packages):
+        """Assert that packages list is filled only when it's on Fedora"""
+        self.message.body = {"distro": {"name": distro}, "message": {"old": "dummy"}}
+
+        assert self.message.packages == packages
 
 
 class TestProjectVersionUpdated:
@@ -657,6 +692,18 @@ class TestProjectVersionUpdatedV2:
 
         assert self.message.stable_versions == ["1.0.0", "0.9.0"]
 
+    def test_packages_fedora(self):
+        """Assert that packages list is filled only when it's on Fedora"""
+        self.message.body = {
+            "message": {
+                "packages": [
+                    {"distro": "Fedora", "package_name": "package_fedora"},
+                    {"distro": "CentOS", "package_name": "package_centos"},
+                ]
+            }
+        }
+        assert self.message.packages == ["package_fedora"]
+
 
 class TestProjectVersionDeleted:
     """Tests for anitya_schema.project_messages.ProjectVersionDeleted class."""
@@ -768,3 +815,11 @@ class TestProjectVersionDeletedV2:
         self.message.body = {"message": {"versions": ["1.0.0"]}}
 
         assert self.message.versions == ["1.0.0"]
+
+    @pytest.mark.skip("The package name is not part of the message")
+    @pytest.mark.parametrize("distro,packages", [("Fedora", ["dummy"]), ("CentOS", [])])
+    def test_packages_fedora(self, distro, packages):
+        """Assert that packages list is filled only when it's on Fedora"""
+        self.message.body = {"message": {"distro": distro, "package": "dummy"}}
+
+        assert self.message.packages == packages
