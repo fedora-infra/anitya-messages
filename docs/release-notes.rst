@@ -4,6 +4,24 @@ Release Notes
 
 .. towncrier release notes start
 
+2.3.0 (2024-10-03)
+==================
+
+Features
+--------
+
+* Set the packages property when relevant
+  (`PR#70 <https://github.com/fedora-infra/anitya-messages/pull/70>`_)
+
+
+Contributors
+------------
+Many thanks to the contributors of bug reports, pull requests, and pull request
+reviews for this release:
+
+* Aurélien Bompard
+
+
 2.2.0 (2023-01-26)
 ==================
 
