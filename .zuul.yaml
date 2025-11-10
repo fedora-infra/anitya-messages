@@ -2,9 +2,18 @@
 - project:
     check:
       jobs:
-        - fi-tox-mypy
-        - fi-tox-lint
-        - fi-tox-format
+        - fi-tox-mypy:
+            vars:
+              dependencies:
+                - libffi-devel
+        - fi-tox-lint:
+            vars:
+              dependencies:
+                - libffi-devel
+        - fi-tox-format:
+            vars:
+              dependencies:
+                - libffi-devel
         - fi-tox-python310
         - fi-tox-python311
         - fi-tox-python312
@@ -14,9 +23,14 @@
                 - graphviz
                 - python3-sphinxcontrib-httpdomain
                 - python3-sqlalchemy_schemadisplay
-        - fi-tox-bandit
-        - fi-tox-diff-cover
+                - libffi-devel
+        - fi-tox-bandit:
+            vars:
+              dependencies:
+                - libffi-devel
         - fi-tox-diff-cover:
             vars:
               tox_envlist: "py312,diff-cover"
+              dependencies:
+                - libffi-devel
               job_dependencies: "python312"
