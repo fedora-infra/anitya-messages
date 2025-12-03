@@ -9,7 +9,7 @@ formats:
 build:
   os: ubuntu-lts-latest
   tools:
-    python: "latest"
+    python: "3.13"
   jobs:
     post_create_environment:
       # Install poetry
