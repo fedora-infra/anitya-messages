@@ -55,8 +55,8 @@ CI (Continuous Integration)
 
 Anitya Messaging Schema has a CI set up to run on each PR. As a CI of choice Anitya
 Messaging Schema is using
-`Fedora zuul <https://fedoraproject.org/wiki/Zuul-based-ci>`_ and the configuration
-could be found in `.zuul.yaml` in Anitya Messaging Schema root directory.
+GitHub Actions and the configuration
+could be found in `.github/workflows/main.yaml` in Anitya Messaging Schema root directory.
 
 The CI runs unit tests for all supported python versions, code style test, coverage test,
 flake8 test (linter), documentation test build and bandit (to check for any security issue).
